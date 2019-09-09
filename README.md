@@ -20,4 +20,4 @@ class TOC extends Component {
 
 ### 2) setState()
 * props로 받은 내용을 수정할 때는, setState()로 수정해야한다.
-* 원본 내용을 바로 setState하기 보다는 concat과 같은 함수를 사용해서 원본을 바꾸지 않는다.
+* shouldComponentUpdate()함수를 사용한다면 concat과 같은 함수를 사용해서 원본을 바꾸지 않는다.
