@@ -1,5 +1,5 @@
-# React
-React.js study repository
+# :pushpin: React
+React.js study repository :rocket:
 
 ----------------------------------
 
@@ -9,10 +9,10 @@ React.js study repository
 import React, { Component } from 'react';
 class TOC extends Component {
   shouldComponentUpdate (newProps, newState) {
-  //  바뀐 state와 state의 값을 받을 수 있음
-  if (this.props.data === newProps.data) {
-    return false;
-  }
+    //  바뀐 state와 state의 값을 받을 수 있음
+    if (this.props.data === newProps.data) {
+      return false;
+    }
     return true;
   }
 }
