@@ -59,3 +59,36 @@ class App extends Component {
 
 export default App;
 ```
+
+### 3) props
+
+* Subject
+
+> 내부에서 this.props로 접근한다.
+
+```javascript
+class Subject extends Component {
+  render () {
+    return (
+      <header>
+        <h1>{ this.props.title }</h1>
+        { this.props.sub }
+      </header>
+    );
+  }
+}
+```
+
+* App
+
+```javascript
+class App extends Component {
+  render () {
+    return (
+      <div classNAme="App">
+        <Subject title="WEB" sub="world wide web!"></Subject>
+      </div>
+    );
+  }
+}
+```
