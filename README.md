@@ -28,3 +28,34 @@ var a = {name: 'tonz'};
 var b = Object.assign({}, a); //  {name: 'tonz'}
 var c = Object.assign({left: 1, right: 2}, a);  //  {left: 1, right: 2, name: 'tonz'}
 ```
+
+### 3) Component
+
+> render 함수의 리턴 값은 항상 최상위 태그부터 시작해야한다.
+
+```react
+import React, { Component } extends from 'react';
+
+class Subject extends Component {
+  render () {
+    return (
+      <header>
+        <h1>WEB</h1>
+        world wide web!
+      </header>
+    );
+  }
+}
+
+class App extends Component {
+  render () {
+    return (
+      <div classNAme="App">
+        <Subject></Subject>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
