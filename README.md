@@ -168,3 +168,34 @@ class App extends Component {
   }
 }
 ```
+
+* **key**
+> TOC 컴포넌트에서 data[i] 등의 방식으로 접근 가능함.
+> 각 배열의 요소는 key로 구분하면됨. vue의 v-for의 key값과 동일.
+
+```javascript
+class App extends Component {
+  constructure (props) {
+    super(props);
+    this.state = {
+      subject: {title: 'WEB', sub: 'world wide web!'},
+      contents: [
+        {id: 1, title: 'HTML', desc: 'HTML is HyperText...'}
+        {id: 2, title: 'CSS', desc: 'CSS is for design'}
+        {id: 3, title: 'JS', desc: 'JS JS JS'}
+      ]
+    }
+  }
+  render () {
+    return (
+      <div classNAme="App">
+        <Subject
+          title={this.state.subject.title}
+          sub={this.state.subject.sub}>
+        </Subject>
+        <TOC data={this.state.contents}></TOC>
+      </div>
+    );
+  }
+}
+```
