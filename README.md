@@ -33,7 +33,7 @@ var c = Object.assign({left: 1, right: 2}, a);  //  {left: 1, right: 2, name: 't
 
 > render 함수의 리턴 값은 항상 최상위 태그부터 시작해야한다.
 
-```react
+```javascript
 import React, { Component } extends from 'react';
 
 class Subject extends Component {
