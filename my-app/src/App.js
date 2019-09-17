@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-import MainPage from './Components/MainPage';
+import SupportLayout from './Components/UILayout/SupportLayout';
 
-function App() {
-  return (
-    <div className="container">
-      <MainPage></MainPage>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="app-body">
+        <div className="container-fluid">
+          <SupportLayout></SupportLayout>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -26,16 +26,35 @@ class MainPage extends Component {
 					label: 'Tag',
 					prop: 'tag',
 					width: 100,
-					filters: [{ text: 'Home', value: 'Home' }, { text: 'Office', value: 'Office' }],
+					filters: [
+						{ status: 'New', value: 'New' },
+						{ status: 'Checked', value: 'Checked' },
+						{ status: 'Solved', value: 'Solved' },
+						{ status: 'Shared', value: 'Shared' },
+					],
 					filterMethod(value, row) {
-														return row.tag === value;
-													},
-					render: (data, column)=>{
-						if (data['tag'] === 'Home') {
-							return <Tag type="primary">{data['tag']}</Tag>
-						} else if (data['tag'] === 'Office') {
-							return <Tag type="success">{data['tag']}</Tag>
+						return row.tag === value;
+					},
+					render: (data, column) => {
+						var type;
+						switch (data['tag']) {
+							case 'New':
+								type = 'primary';
+								break;
+							case 'Checked':
+								type = 'warning';
+								break;
+							case 'Solved':
+								type = 'success';
+								break;
+							case 'Shared':
+								type = 'danger';
+								break;
+							default:
+								type = 'gray'
+								break;
 						}
+						return <Tag type={type}>{ data['tag'] }</Tag>
 					}
 				}
 			],
@@ -43,22 +62,22 @@ class MainPage extends Component {
 				date: '2016-05-03',
 				name: 'Tom',
 				address: 'No. 189, Grove St, Los Angeles',
-				tag: 'Home'
+				tag: 'New'
 			}, {
 				date: '2016-05-02',
 				name: 'Tom',
 				address: 'No. 189, Grove St, Los Angeles',
-				tag: 'Office'
+				tag: 'Checked'
 			}, {
 				date: '2016-05-04',
 				name: 'Tom',
 				address: 'No. 189, Grove St, Los Angeles',
-				tag: 'Home'
+				tag: 'Solved'
 			}, {
 				date: '2016-05-01',
 				name: 'Tom',
 				address: 'No. 189, Grove St, Los Angeles',
-				tag: 'Office'
+				tag: 'Shared'
 			}]
 		}
 	}
