@@ -4,10 +4,8 @@ import MainPage from './Components/MainPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <MainPage title="This is Title" sub="hello subtitle"></MainPage>
-      </header>
+    <div className="container">
+      <MainPage></MainPage>
     </div>
   );
 }
