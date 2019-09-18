@@ -6,6 +6,7 @@
     "element-react": "^1.4.34",
     "element-theme-default": "^1.4.13",
     "react": "^16.9.0",
+    "react-burger-menu": "^2.6.11",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1"
   },
