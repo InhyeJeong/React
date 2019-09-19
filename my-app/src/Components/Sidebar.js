@@ -3,7 +3,30 @@ import 'element-theme-default';
 import { slide as Menu } from 'react-burger-menu'
 import '../App.css'
 class Sidebar extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuList: [
+        {name: 'Home'},
+        {name: 'About'},
+        {name: 'Contact'},
+        {name: 'Settings'},
+      ]
+    }
+  }
+  getItems () {
+    let items;
+    items = [
+      <a key="0" href="/test"><i className="fa fa-fw fa-star-o" /><span>Favorites</span></a>,
+      <a key="1" href="/test"><i className="fa fa-fw fa-bell-o" /><span>Alerts</span></a>,
+      <a key="2" href="/test"><i className="fa fa-fw fa-envelope-o" /><span>Messages</span></a>,
+      <a key="3" href="/test"><i className="fa fa-fw fa-comment-o" /><span>Comments</span></a>,
+      <a key="4" href="/test"><i className="fa fa-fw fa-bar-chart-o" /><span>Analytics</span></a>,
+      <a key="5" href="/test"><i className="fa fa-fw fa-newspaper-o" /><span>Reading List</span></a>
+    ];
+    return items;
+  }
+  render () {
     return (
       // <Layout.Col span={8}>
       //   <h5>My React Menu</h5>
@@ -24,11 +47,14 @@ class Sidebar extends Component {
       //     <Menu.Item index="3">Navigator Three</Menu.Item>
       //   </Menu>
       // </Layout.Col>
+      // <Menu>
+      //   <a id="home" className="menu-item" href="/"></a>
+      //   <a id="about" className="menu-item" href="/about">About</a>
+      //   <a id="contact" className="menu-item" href="/contact">Contact</a>
+      //   <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+      // </Menu>
       <Menu>
-        <a id="home" className="menu-item" href="/">Home</a>
-        <a id="about" className="menu-item" href="/about">About</a>
-        <a id="contact" className="menu-item" href="/contact">Contact</a>
-        <a onClick={ this.showSettings } className="menu-item--small" href="">Settings</a>
+        { this.getItems() }
       </Menu>
     );
   }
