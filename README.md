@@ -199,3 +199,18 @@ class App extends Component {
   }
 }
 ```
+
+### 6) if/else statement in JSX
+
+```javascript
+render () {
+  let sessionFlag = this.props.user.session //  bull
+  return (
+    <div>
+      <a href={(sessionFlag) ? '/logout' : '/login'}>
+        {(sessionFlag) ? 'Logout' : 'Login'}
+      </a>
+    </div>
+  )
+}
+```
