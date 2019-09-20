@@ -217,6 +217,12 @@ render () {
 }
 ```
 
+> 다음은 틀린 구문이다. 중괄호 내에서 return문을 사용하지 않는다. 삼항 연산자를 사용한다.
+
+```javascript
+class={if(!this.props.admin) return 'hide'}
+```
+
 * JSX is converted to javascipt
 
 <p align="center">
