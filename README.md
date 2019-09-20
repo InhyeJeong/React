@@ -222,3 +222,15 @@ render () {
 <p align="center">
   <img src="./images/jsx-compile.png" width="500" >	
 </p>
+
+* data-속성
+
+> 사용자 정의 속성을 이용할 때, data- prefix를 붙히지 않으면 React에서는 렌더링되지 않는다. HTML 표준 속성이 아니기 때뮨.
+
+```javascript
+//  rendering OK in React
+<li data-object-id="321"></li>
+
+//  not rendering in React
+<li object-id="321"></li>
+```
