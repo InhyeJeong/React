@@ -256,3 +256,13 @@ let smallFontSize = {fontSize: '10px'}
 </label>
 :
 ```
+
+* Boolean 값을 속성 값으로 사용하는 경우
+> disabled, required, checked, autofocus, readOnly와 같은 일부 속성은 폼 요소에만 사용한다. 속성 값은 반드시 {} 안에 자바스크립트 식으로 작성해야 한다.
+
+```javascript
+//  GOOD
+<input disabled={false} />
+//  XXX !!!!
+<input disabled="false" />
+```
