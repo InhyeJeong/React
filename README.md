@@ -234,3 +234,25 @@ render () {
 //  not rendering in React
 <li object-id="321"></li>
 ```
+
+* style
+
+> 문자열 대신 자바스크립트 객체를 전달한다. css는 카멜케이스 표기
+
+```javascript
+let smallFontSize = {fontSize: '10px'}
+<input style={smallFontSize}>
+```
+
+* class & for
+
+> React와 JSX는 class, for를 제외하면 표준 HTML 속성을 모두 사용할 수 있다.
+
+```javascript
+<div className="hidden">...</div>
+:
+<label htmlFor={this.props.name}>
+  {this.props.label}
+</label>
+:
+```
