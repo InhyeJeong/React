@@ -200,7 +200,9 @@ class App extends Component {
 }
 ```
 
-### 6) if/else statement in JSX
+### 6) JSX
+
+* if/else statement in JSX
 
 ```javascript
 render () {
@@ -214,3 +216,9 @@ render () {
   )
 }
 ```
+
+* JSX is converted to javascipt
+
+<p align="center">
+  <img src="./images/jsx-compile.png" width="500" >	
+</p>
