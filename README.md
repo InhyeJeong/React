@@ -20,9 +20,20 @@ class TOC extends Component {
 
 ### 2) setState()
 > props로 받은 내용을 수정할 때는, setState()로 수정해야한다.
+
+```javascript
+<header>
+  <h1><a href="/" onClick={function(e) {
+        this.setState({ mode: 'welcome' });
+       }.bind(this)}>{ this.state.subject.title }</a>
+  </h1>
+</header>
+```
+
 > shouldComponentUpdate()함수를 사용한다면 concat, Array.from()과 같은 함수를 사용해서 원본을 바꾸지 않는다.
 * arr copy : **Array.from()**
 * object copy : **Object.assign()**
+
 ```javasript
 var a = {name: 'tonz'};
 var b = Object.assign({}, a); //  {name: 'tonz'}
