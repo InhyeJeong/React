@@ -180,6 +180,36 @@ class App extends Component {
 }
 ```
 
+> state 값이 갱신되면 render()가 실행되며, 변경된 부분만 update된다.
+
+```javascript
+class Clock extends Component {
+  constructure (props) {
+    super(props);
+    this.launchClock
+    this.state = {
+      //  초기 상태에 현재 시각 추가
+      currentTime: (newDate()).toLocaleString('en')
+    }
+  }
+  launchClock () {
+    setInterval(() => {
+      this.setState({
+        //  매 초마다 현재시각으로 상태 갱신
+        currentTime: (newDate()).toLocaleString('en')
+      });
+    }, 1000);
+  }
+  render () {
+    return (
+      <div>
+      { this.state.currentTime }
+      </div>
+    );
+  }
+}
+```
+
 * **key**
 > TOC 컴포넌트에서 data[i] 등의 방식으로 접근 가능함.
 > 각 배열의 요소는 key로 구분하면됨. vue의 v-for의 key값과 동일.
