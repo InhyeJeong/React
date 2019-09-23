@@ -5,7 +5,7 @@ const AnalogClock = function (props) {
   let date = new Date(props.time);
   let dialStyle = {
     position: 'relative',
-    top: 0,
+    top: 200,
     left: '50%',
     width: 200,
     height: 200,
@@ -20,7 +20,7 @@ const AnalogClock = function (props) {
     border: '1px solid red',
     width: '40%',
     height: 1,
-    transform: 'rotate(' + (date.getSeconds() / 60 * 360 - 90).toString() + 'deg)',
+    transform: `rotate(${(date.getSeconds() / 60 * 360 - 90).toString()}deg)`,
     transformOrigin: '0% 0%',
     backgroundColor: 'red'
   };
@@ -31,7 +31,7 @@ const AnalogClock = function (props) {
     border: '1px solid grey',
     width: '40%',
     height: 3,
-    transform: 'rotate(' + (date.getMinutes() / 60 * 360 - 90).toString() + 'deg)',
+    transform: `rotate(${(date.getMinutes() / 60 * 360 - 90).toString()}deg)`,
     transformOrigin: '0% 0%',
     backgroundColor: 'grey'
   };
@@ -42,7 +42,7 @@ const AnalogClock = function (props) {
     border: '1px solid grey',
     width: '20%',
     height: 7,
-    transform: 'rotate(' + (date.getHours() / 12 * 360 - 90).toString() + 'deg)',
+    transform: `rotate(${(date.getHours() / 60 * 360 - 90).toString()}deg)`,
     transformOrigin: '0% 0%',
     backgroundColor: 'grey'
   };

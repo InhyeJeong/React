@@ -19,7 +19,7 @@ class Clock extends Component {
   render() {
     //  componet로 분리해서 사용가능
     const DigitalClock = function(props) {
-      return <div style={{left: '50%', position: 'relative'}}>{props.time}</div>
+      return <div style={{top: 250, left: '52%', position: 'relative'}}>{props.time}</div>
     }
     return (
       <div>
