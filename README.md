@@ -316,7 +316,7 @@ let smallFontSize = {fontSize: '10px'}
 
 ### 7) Redux
 
-> [React 적용가이드](https://d2.naver.com/helloworld/1848131)
+ex) [React 적용가이드](https://d2.naver.com/helloworld/1848131)
 
 #### 1) [React 컴포넌트 만들기](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js): 하위 React 컴포넌트로 prop(or state)와 dispatch() 메서드를 전달한다.
 
@@ -372,7 +372,11 @@ const todos = (state = [], action) => {
 
 #### 4) [dispatch() 메서드에 액션 결과 전달](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js#L35): 액션의 결과를 전달한다.
 ---------------------------------------------------------------------------------------------------------------------
-> [Redux의 이해](https://d2.naver.com/helloworld/4966453)
+ex) [Redux의 이해](https://d2.naver.com/helloworld/4966453)
+
+<p align="center">
+  <img src="./images/redux-example.png" width="500" >	
+</p>
 
 * store
 > 한 개의 계층형 객체.
