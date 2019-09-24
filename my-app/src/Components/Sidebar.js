@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'element-theme-default';
 import { slide as Menu } from 'react-burger-menu'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 import '../App.css'
 class Sidebar extends Component {
   constructor(props) {
