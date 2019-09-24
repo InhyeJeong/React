@@ -371,5 +371,20 @@ const todos = (state = [], action) => {
 ```
 
 #### 4) [dispatch() 메서드에 액션 결과 전달](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js#L35): 액션의 결과를 전달한다.
-
+---------------------------------------------------------------------------------------------------------------------
 > [Redux의 이해](https://d2.naver.com/helloworld/4966453)
+
+* store
+> 한 개의 계층형 객체.
+> 애플리케이션의 state를 가지고 있다.
+
+* React Component
+> stae에 맞게 화면을 그린다.
+
+* action creator
+> 사용자가 발생시키는 이벤트에 맞춰 스토어에 전달할 액션을 만든다.
+> 액션생성자가 만드는 액션은 [순수객체]다.
+
+* reducer
+> 현재 state와 액션을 전달받아 새로운 state를 반환한다.
+> 리듀서는 [순수 함수]다.
