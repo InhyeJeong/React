@@ -318,7 +318,7 @@ let smallFontSize = {fontSize: '10px'}
 
 > [React 적용가이드](https://d2.naver.com/helloworld/1848131)
 
-## 1) [React 컴포넌트 만들기](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js): 하위 React 컴포넌트로 prop(or state)와 dispatch() 메서드를 전달한다.
+#### 1) [React 컴포넌트 만들기](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js): 하위 React 컴포넌트로 prop(or state)와 dispatch() 메서드를 전달한다.
 
 ```javascript
 const todolistStateToProps = (state) => {
@@ -338,7 +338,7 @@ const todolistDispatchToProps = (dispatch) => {
 export default connect(todolistStateToProps,todolistDispatchToProps)(TODOList);
 ```
 
-## 2) [액션 명령어와 액션 메서드 만들기](https://github.com/naver/react-sample-code/blob/master/src/action/todo.js#L20-L30): state 변경과 비동기 처리를 구현한다.
+#### 2) [액션 명령어와 액션 메서드 만들기](https://github.com/naver/react-sample-code/blob/master/src/action/todo.js#L20-L30): state 변경과 비동기 처리를 구현한다.
 ```javascript
 function complete({complete, id}) {
 	return { type: COMPLETE_TODO,  complete, id};
@@ -353,7 +353,7 @@ function complete2(data2) {
 }
 ```
 
-## 3) [리듀서 생성](https://github.com/naver/react-sample-code/blob/master/src/reducer/todos.js#L29-L40): 스토어의 구조를 정한다.
+#### 3) [리듀서 생성](https://github.com/naver/react-sample-code/blob/master/src/reducer/todos.js#L29-L40): 스토어의 구조를 정한다.
 
 ```javascript
 const todos = (state = [], action) => {
@@ -370,6 +370,6 @@ const todos = (state = [], action) => {
 }
 ```
 
-## 4) [dispatch() 메서드에 액션 결과 전달](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js#L35): 액션의 결과를 전달한다.
+#### 4) [dispatch() 메서드에 액션 결과 전달](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js#L35): 액션의 결과를 전달한다.
 
 > [Redux의 이해](https://d2.naver.com/helloworld/4966453)
