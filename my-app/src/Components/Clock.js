@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AnalogClock from './AnalogClock';
+import Logger from './Logger';
 class Clock extends Component {
 	constructor(props) {
 		super(props);
@@ -25,6 +26,8 @@ class Clock extends Component {
       <div>
         <AnalogClock time={this.state.currentTime}/>
         <DigitalClock time={this.state.currentTime}/>
+        <h1>Below is Logger</h1>
+        <Logger time={this.state.currentTime}></Logger>
       </div>
     )
   }
