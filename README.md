@@ -313,3 +313,82 @@ let smallFontSize = {fontSize: '10px'}
 //  XXX !!!!
 <input disabled="false" />
 ```
+
+### 7) Redux
+
+ex) [React 적용가이드](https://d2.naver.com/helloworld/1848131)
+
+#### 1) [React 컴포넌트 만들기](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js): 하위 React 컴포넌트로 prop(or state)와 dispatch() 메서드를 전달한다.
+
+```javascript
+const todolistStateToProps = (state) => {
+  return {
+    todos: state.todos
+  }
+}
+
+const todolistDispatchToProps = (dispatch) => {
+    return {
+        onClick(data){
+          dispatch(complete(data))
+        }
+    }
+}
+//  connect의 첫번째 parameter는 state, 두번째 parameter는 dispatch 함수
+export default connect(todolistStateToProps,todolistDispatchToProps)(TODOList);
+```
+
+#### 2) [액션 명령어와 액션 메서드 만들기](https://github.com/naver/react-sample-code/blob/master/src/action/todo.js#L20-L30): state 변경과 비동기 처리를 구현한다.
+```javascript
+function complete({complete, id}) {
+	return { type: COMPLETE_TODO,  complete, id};
+}
+
+function complete2(data2) {
+  return (dispatch) => {
+    return fetch("api/add.json").then(
+      res => res.json().then(data => dispatch(complete(data2)))
+    );
+  };
+}
+```
+
+#### 3) [리듀서 생성](https://github.com/naver/react-sample-code/blob/master/src/reducer/todos.js#L29-L40): 스토어의 구조를 정한다.
+
+```javascript
+const todos = (state = [], action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return [
+        ...state, todo(undefined, action)
+      ];
+    case COMPLETE_TODO:
+      return state.map(t => todo(t, action));
+    default:
+      return state;
+  }
+}
+```
+
+#### 4) [dispatch() 메서드에 액션 결과 전달](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js#L35): 액션의 결과를 전달한다.
+---------------------------------------------------------------------------------------------------------------------
+ex) [Redux의 이해](https://d2.naver.com/helloworld/4966453)
+
+<p align="center">
+  <img src="./images/redux-example.png" width="500" >	
+</p>
+
+* store
+> 한 개의 계층형 객체.
+> 애플리케이션의 state를 가지고 있다.
+
+* React Component
+> stae에 맞게 화면을 그린다.
+
+* action creator
+> 사용자가 발생시키는 이벤트에 맞춰 스토어에 전달할 액션을 만든다.
+> 액션생성자가 만드는 액션은 [순수객체]다.
+
+* reducer
+> 현재 state와 액션을 전달받아 새로운 state를 반환한다.
+> 리듀서는 [순수 함수]다.
