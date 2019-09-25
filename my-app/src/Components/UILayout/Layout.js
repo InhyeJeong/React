@@ -3,9 +3,10 @@ import 'element-theme-default';
 import MainPage from '../MainPage';
 import Clock from '../Clock';
 import Sidebar from '../Sidebar';
+import Script from './../Note/Script'
 import '../../App';
 
-class SupportLayout extends Component {
+class Layout extends Component {
 	render() {
 		return (
 			<div className="">
@@ -14,7 +15,8 @@ class SupportLayout extends Component {
             <Sidebar></Sidebar>
           </div>
           <div className="">
-            <Clock></Clock>
+            {/* <Clock></Clock> */}
+            <Script></Script>
             {/* <MainPage></MainPage> */}
           </div>
         </div>
@@ -23,4 +25,4 @@ class SupportLayout extends Component {
 	}
 }
 
-export default SupportLayout;
+export default Layout;

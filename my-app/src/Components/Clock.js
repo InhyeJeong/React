@@ -6,12 +6,14 @@ class Clock extends Component {
 		super(props);
     this.launchClock()
     this.state = {
+      counter: 0,
       currentTime: (new Date()).toLocaleString('en')
     }
   }
   launchClock () {
     setInterval(() => {
       this.setState({
+        counter: ++this.state.counter,
         //  매 초마다 현재시각으로 상태 갱신
         currentTime: (new Date()).toLocaleString('en')
       });
@@ -22,6 +24,7 @@ class Clock extends Component {
     const DigitalClock = function(props) {
       return <div style={{top: 250, left: '52%', position: 'relative'}}>{props.time}</div>
     }
+    if (this.state.counter > 2) return <div><h1>2초가 지났어요 !!</h1></div>
     return (
       <div>
         <AnalogClock time={this.state.currentTime}/>
