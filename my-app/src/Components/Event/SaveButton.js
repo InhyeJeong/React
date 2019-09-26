@@ -10,7 +10,6 @@ class SaveButton extends Component {
 	}
 	render () {
 		return <button onClick={this.handleSave}>Save</button>
-
 	}
 }
 

@@ -6,6 +6,7 @@ import Sidebar from '../Sidebar';
 import Script from './../Note/Script'
 import '../../App';
 import SaveButton from '../Event/SaveButton';
+import Content from '../Event/Content';
 
 class Layout extends Component {
 	render() {
@@ -19,7 +20,8 @@ class Layout extends Component {
             {/* <Clock></Clock> */}
             {/* <Script></Script> */}
             {/* <MainPage></MainPage> */}
-            <SaveButton></SaveButton>
+            {/* <SaveButton></SaveButton> */}
+            <Content></Content>
           </div>
         </div>
       </div>
