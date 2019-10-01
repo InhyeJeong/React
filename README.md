@@ -392,3 +392,17 @@ ex) [Redux의 이해](https://d2.naver.com/helloworld/4966453)
 * reducer
 > 현재 state와 액션을 전달받아 새로운 state를 반환한다.
 > 리듀서는 [순수 함수]다.
+
+### 8) props-type
+
+```javascript
+class DatePicker extends Component {
+ :
+}
+:
+DatePicker.propTypes {
+ currentDate: PropTypes.string.isRequired,
+ rows: PropTypes.number,
+ locale: PropTypes.oneOf(['US', 'KO']),
+}
+```
