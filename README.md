@@ -406,3 +406,17 @@ DatePicker.propTypes {
  locale: PropTypes.oneOf(['US', 'KO']),
 }
 ```
+
+### 9) HOC
+> 코드 재사용을 위한 React 고차 컴포넌트
+
+```javascript
+const LoadWebSite = (Component) => {
+ :
+ class _LoadWebSite extends Component {
+  :
+  _LoadWebSite.displayName = 'Enhanced Component'
+  return _LoadWebSite
+ } 
+}
+```
