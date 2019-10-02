@@ -4,7 +4,7 @@ React.js study repository :rocket:
 ----------------------------------
 
 ### 1) shouldComponentUpdate ()
-> [Life Cycle](https://ko.reactjs.org/docs/react-component.html#static-getderivedstatefromprops)
+> [Life Cycle](https://ko.reactjs.org/docs/react-component.html)
 * render() 함수 실행 여부를 개발자가 결정할 수 있음. 불필요한 렌더링을 막을 수 있음.
 ```javascript
 import React, { Component } from 'react';
