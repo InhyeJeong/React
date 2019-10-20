@@ -394,7 +394,7 @@ ex) [Redux의 이해](https://d2.naver.com/helloworld/4966453)
 > 현재 state와 액션을 전달받아 새로운 state를 반환한다.
 > 리듀서는 [순수 함수]다.
 
-### 8) props-type
+### 8) [props-type](https://ko.reactjs.org/docs/typechecking-with-proptypes.html#___gatsby)
 
 ```javascript
 class DatePicker extends Component {
@@ -404,6 +404,7 @@ class DatePicker extends Component {
 DatePicker.propTypes {
  currentDate: PropTypes.string.isRequired,
  rows: PropTypes.number,
+ // 열거형(enum)으로 처리하여 prop가 특정 값들로 제한되도록 할 수 있습니다.
  locale: PropTypes.oneOf(['US', 'KO']),
 }
 ```
