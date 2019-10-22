@@ -84,7 +84,7 @@ classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo
 // other falsy values are just ignored
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
 ```
-
+--------------------------------------------------------------
 ### 1) shouldComponentUpdate ()
 > [Life Cycle](https://ko.reactjs.org/docs/react-component.html)
 * render() 함수 실행 여부를 개발자가 결정할 수 있음. 불필요한 렌더링을 막을 수 있음.
