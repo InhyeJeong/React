@@ -2,6 +2,88 @@
 React.js study repository :rocket:
 
 ----------------------------------
+* react library
+1) [react-filepond](https://github.com/pqina/react-filepond) : file upload library
+> usage
+```javascript
+import { FilePond, registerPlugin } from "react-filepond"
+import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orientation"
+import FilePondPluginImagePreview from "filepond-plugin-image-preview"
+import 'filepond/dist/filepond.min.css'
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css'
+:
+render() {
+    return (
+      <div className="App">
+        {/* Pass FilePond properties as attributes */}
+        <FilePond
+          ref={ref => (this.pond = ref)}
+          files={this.state.files}
+          allowMultiple={true}
+          maxFiles={3}
+          server="/api"
+          oninit={() => this.handleInit()}
+          onupdatefiles={fileItems => {
+            // Set currently active file objects to this.state
+            this.setState({
+              files: fileItems.map(fileItem => fileItem.file)
+            });
+          }}
+        />
+      </div>
+    );
+  }
+```
+
+2) [react-draft-wysiwyg](https://jpuri.github.io/react-draft-wysiwyg/#/)
+> usage
+
+```javascipt
+import React, { Component } from 'react';
+import { Editor } from 'react-draft-wysiwyg';
+
+<Editor
+  wrapperClassName="wrapper-class"
+  editorClassName="editor-class"
+  toolbarClassName="toolbar-class"
+  wrapperStyle={<wrapperStyleObject>}
+  editorStyle={<editorStyleObject>}
+  toolbarStyle={<toolbarStyleObject>}
+/>
+```
+
+3) [react-text-mask](https://github.com/text-mask/text-mask/tree/master/react#readme)
+> usage
+```javascript
+<MaskedInput
+  mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
+  className="form-control"
+  placeholder="Enter a phone number"
+  //  you can input value
+  value={this.state.number}
+  guide={false}
+  id="my-input-id"
+  onBlur={() => {}}
+  onChange={() => {}}
+/>
+```
+
+4) [classNames](https://github.com/JedWatson/classnames#readme)
+> like **Vue.js class style binding**
+```javascript
+classNames('foo', 'bar'); // => 'foo bar'
+classNames('foo', { bar: true }); // => 'foo bar'
+classNames({ 'foo-bar': true }); // => 'foo-bar'
+classNames({ 'foo-bar': false }); // => ''
+classNames({ foo: true }, { bar: true }); // => 'foo bar'
+classNames({ foo: true, bar: true }); // => 'foo bar'
+
+// lots of arguments of various types
+classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo bar baz quux'
+
+// other falsy values are just ignored
+classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
+```
 
 ### 1) shouldComponentUpdate ()
 > [Life Cycle](https://ko.reactjs.org/docs/react-component.html)
