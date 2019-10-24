@@ -397,7 +397,7 @@ let smallFontSize = {fontSize: '10px'}
 <input disabled="false" />
 ```
 
-### 7) Redux
+### 7) [Redux](https://www.youtube.com/playlist?list=PLuHgQVnccGMB-iGMgONoRPArZfjRuRNVc)
 
 ex) [React 적용가이드](https://d2.naver.com/helloworld/1848131)
 
