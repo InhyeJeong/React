@@ -400,7 +400,7 @@ let smallFontSize = {fontSize: '10px'}
 ### 7) [Redux](https://www.youtube.com/playlist?list=PLuHgQVnccGMB-iGMgONoRPArZfjRuRNVc)
 
 <p align="center">
-  <img src="./images/redux-flow.png" width="500" >	
+  <img src="./images/redux-flow.png" width="900" >	
 </p>
 
 ex) [React 적용가이드](https://d2.naver.com/helloworld/1848131)
