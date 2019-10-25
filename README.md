@@ -399,6 +399,10 @@ let smallFontSize = {fontSize: '10px'}
 
 ### 7) [Redux](https://www.youtube.com/playlist?list=PLuHgQVnccGMB-iGMgONoRPArZfjRuRNVc)
 
+<p align="center">
+  <img src="./images/redux-flow.png" width="500" >	
+</p>
+
 ex) [React 적용가이드](https://d2.naver.com/helloworld/1848131)
 
 #### 1) [React 컴포넌트 만들기](https://github.com/naver/react-sample-code/blob/master/src/component/todolist/TODOList.js): 하위 React 컴포넌트로 prop(or state)와 dispatch() 메서드를 전달한다.
