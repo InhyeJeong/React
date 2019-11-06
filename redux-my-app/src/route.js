@@ -4,18 +4,20 @@ import {
   Route,
 } from 'react-router-dom'
 import App from './App';
-// const Movies = require('components/movies/movies.js')
-// const Movie = require('components/movie/movie.js')
+import MovieList from './components/Movie/MovieList'
+import Movie from './components/Movie/Movie'
 
 export default (
   <BrowserRouter>
-    <div>
-      <Route path="/" component={App} >
-        {/* <IndexRoute component={Movies} />
-        <Route path="movies" component={Movies}>
-          <Route path=":id" component={Movie} />
-        </Route> */}
+    <>
+    <Route path="/" component={App} >
+      {/* <IndexRoute component={Movies} /> */}
+      <Route path="/movies" component={MovieList}>
+        
       </Route>
-    </div>
+      <Route path="/movies/:id" component={Movie} />
+    </Route>
+      
+    </>
   </BrowserRouter>
 )
