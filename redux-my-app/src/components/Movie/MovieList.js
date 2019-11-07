@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import moviesJson from './movies.json'
 import {fetchMoviesActionCreator} from '../../modules/action'
-
+import axios from 'axios'
 class MovieList extends Component {
   constructor (props) {
     super(props)
@@ -12,12 +12,23 @@ class MovieList extends Component {
     }
   }
   componentDidMount() {
-    var response = this.props.fetchMovieList(moviesJson)
-    this.setState({
-      movieList: response.movies
-    }, () => {
-      console.log('fetch success ->', this.state.movieList)
+    const query = `{
+      movies(index:1) {
+        title,
+        cover
+      }
+    }`
+    axios.get('http://localhost:3000/q?query={movie{title,cover}}').then((response) => {
+      // response = this.props.fetchMovieList(response)
+      console.log(response)
     })
+    
+    // var response = this.props.fetchMovieList(moviesJson)
+    // this.setState({
+    //   movieList: response.movies
+    // }, () => {
+    //   console.log('fetch success ->', this.state.movieList)
+    // })
   }
   // Comment componentWillMount() and uncomment componentDidMount to use async fetch
 
