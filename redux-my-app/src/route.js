@@ -2,6 +2,7 @@ import React from 'react'
 import {
   BrowserRouter,
   Route,
+  Switch,
 } from 'react-router-dom'
 import App from './App';
 import MovieList from './components/Movie/MovieList'
@@ -9,15 +10,9 @@ import Movie from './components/Movie/Movie'
 
 export default (
   <BrowserRouter>
-    <>
-    <Route path="/" component={App} >
-      {/* <IndexRoute component={Movies} /> */}
-      <Route path="/movies" component={MovieList}>
-        
-      </Route>
+    <Route exact={true} path="/movies" component={MovieList} />
+    <Switch>
       <Route path="/movies/:id" component={Movie} />
-    </Route>
-      
-    </>
+    </Switch>
   </BrowserRouter>
 )

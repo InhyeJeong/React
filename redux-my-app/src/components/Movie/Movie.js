@@ -21,7 +21,7 @@ class Movie extends Component {
   }
 
   fetchMovie(id = this.props.match.params.id) {
-    const query = `{movie(index:${id}) {title, cover, year, starring {name}}}`
+    const query = `{movie(index:${id}){title,cover,year,starring{name}}}`
     axios.get(`http://localhost:3000/q?query=${query}`).then((response) => {
       this.props.fetchMovie(response)
     })
