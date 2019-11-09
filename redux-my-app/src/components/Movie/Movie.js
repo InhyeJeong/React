@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import moviesJson from './movies.json'
 import { fetchMovieActionCreator } from '../../modules/action'
-import { bindActionCreators } from 'redux';
+import axios from 'axios'
 class Movie extends Component {
   constructor (props) {
     super(props)
@@ -12,13 +11,20 @@ class Movie extends Component {
     }
   }
   componentDidMount() {
-    this.props.fetchMovie(this.props.match.params.id)
+    this.fetchMovie(this.props.match.params.id)
   }
 
   componentDidUpdate(next) {
     if (this.props.match.params.id !== next.match.params.id) {
-      this.props.fetchMovie(this.props.match.params.id)
+      this.fetchMovie(this.props.match.params.id)
     }
+  }
+
+  fetchMovie(id = this.props.match.params.id) {
+    const query = `{movie(index:${id}) {title, cover, year, starring {name}}}`
+    axios.get(`http://localhost:3000/q?query=${query}`).then((response) => {
+      this.props.fetchMovie(response)
+    })
   }
 
   render() {
@@ -27,7 +33,6 @@ class Movie extends Component {
         starring: []
       }
     } = this.props
-
     return (
       <div>
         <hr/>
@@ -40,12 +45,13 @@ class Movie extends Component {
           <div>{movie.year}</div>
           <h3>ACTOR </h3>
           <div>
-            {movie.starring.map((actor = {}, index) => (
-              <div
-                key={index}>
-                {actor.name}
-              </div>
-            ))}
+            {movie.starring.map((actor = {}, index) => {
+              return (
+                <div key={index}>
+                  {actor.name}
+                </div>
+              )
+            })}
           </div>
         </div>
         <Link

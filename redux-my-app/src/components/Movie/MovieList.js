@@ -11,9 +11,9 @@ class MovieList extends Component {
     }
   }
   componentDidMount() {
-    const query = `{movies{title,cover}}`
+    const query = `{movies {title, cover}}`
     axios.get(`http://localhost:3000/q?query=${query}`).then((response) => {
-      var res = this.props.fetchMovieList(response.data.data.movies)
+      var res = this.props.fetchMovieList(response)
       this.setState({
         movieList: res.movies
       }, () => {

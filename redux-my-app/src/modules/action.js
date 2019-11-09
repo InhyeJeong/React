@@ -9,17 +9,17 @@ export const FETCH_MOVIE = 'movies/FETCH_MOVIE'
  * action creators
  */
 
-export function fetchMoviesActionCreator(movies) {
+export function fetchMoviesActionCreator(response) {
   return {
     type: FETCH_MOVIES,
-    movies
+    movies: response.data.data.movies
   };
 }
 
-export function fetchMovieActionCreator(index) {
+export function fetchMovieActionCreator(response) {
   return {
     type: FETCH_MOVIE,
-    index
+    movie: response.data.data.movie
   };
 }
 

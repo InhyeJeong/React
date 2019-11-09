@@ -14,12 +14,12 @@ function fetchMoviesReducer(state = [], action) {
     case FETCH_MOVIES:
       return {
         ...state,
-        all: action
+        all: action.movies
       };
       case FETCH_MOVIE:
         return {
           ...state,
-          current: state.all.movies[action.index - 1]
+          current: action.movie
         };
     default:
       return initialState;
