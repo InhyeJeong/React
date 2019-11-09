@@ -8,11 +8,12 @@ const {
   PWD = __dirname
 } = process.env
 const app = express()
+//  CORS
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   next();
- });
+});
 //  단일 graph ql 경로를 정의하고 모든 데이터를 전달한다.
 app.use('/q', graphqlHTTP(req => ({
   schema,

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import moviesJson from './movies.json'
-import {fetchMoviesActionCreator} from '../../modules/action'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { fetchMoviesActionCreator } from '../../modules/action'
 import axios from 'axios'
 class MovieList extends Component {
   constructor (props) {
@@ -12,33 +11,17 @@ class MovieList extends Component {
     }
   }
   componentDidMount() {
-    const query = `{
-      movies(index:1) {
-        title,
-        cover
-      }
-    }`
-    axios.get('http://localhost:3000/q?query={movie{title,cover}}').then((response) => {
-      // response = this.props.fetchMovieList(response)
-      console.log(response)
+    const query = `{movies{title,cover}}`
+    axios.get(`http://localhost:3000/q?query=${query}`).then((response) => {
+      var res = this.props.fetchMovieList(response.data.data.movies)
+      this.setState({
+        movieList: res.movies
+      }, () => {
+        console.log('fetch success ->', this.state.movieList)
+      })
     })
-    
-    // var response = this.props.fetchMovieList(moviesJson)
-    // this.setState({
-    //   movieList: response.movies
-    // }, () => {
-    //   console.log('fetch success ->', this.state.movieList)
-    // })
   }
-  // Comment componentWillMount() and uncomment componentDidMount to use async fetch
 
-  // componentDidMount() {
-  //   fetch('./movies.json', {method: 'GET'})
-  //     .then((response)=>{return response.json()})
-  //     .then((movies)=>{
-  //       this.props.fetchMovies(movies)
-  //     })
-  // }
   render() {
     return (
       <div style={{'display': 'flex', 'flexDirection': 'column'}}>
