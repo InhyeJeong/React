@@ -95,5 +95,10 @@ let store = createStore(todoApp);
 
 ### how to use
 * 컴포넌트에서 원하는 액션 호출
+
+```javascript
+import { connect } from 'react-redux'
+```
+
 * 리듀서에서 호출된 1번 액션의 타입에 따른 새로운 state return
 * state값이 변경됨에 따라 렌더 함수가 호출되거나 등등 원하는 조작가능
