@@ -86,7 +86,7 @@ export default movieReducer;
 * Redux 애플리케이션에서 **단 하나의 스토어**만 가질 수 있음을 알아두는것이 중요합니다.
 * 만약 데이터를 다루는 로직을 쪼개고 싶다면, 여러개의 스토어 대신 **리듀서 조합**을 사용할 수 있습니다.
 
-```javasript
+```javascript
 import { createStore } from 'redux';
 import todoApp from './reducers';
 
