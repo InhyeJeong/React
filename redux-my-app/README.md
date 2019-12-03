@@ -10,14 +10,14 @@ https://deminoth.github.io/redux/
 
 ```javascript
 /*
- * action types
+ * action types : 액션은 애플리케이션에서 스토어로 보내는 데이터 묶음입니다.
  */
 
 export const FETCH_MOVIES = 'movies/FETCH_MOVIES'
 export const FETCH_MOVIE = 'movies/FETCH_MOVIE'
 
 /*
- * action creators
+ * action creators : 액션 생산자는 액션을 만드는 함수입니다.
  */
 
 export function fetchMoviesActionCreator(response) {
