@@ -7,6 +7,8 @@ https://deminoth.github.io/redux/
 ### actions
 * type const 정의
 * 원하는 변경 return
+> dispatch() 함수를 스토어에서 store.dispatch()로 바로 접근할 수 있지만, 여러분은 보통 react-redux의 connect()와 같은 헬퍼를 통해 접근할 것입니다. 여러 액션 생산자를 dispatch()에 바인드하기 위해 bindActionCreators()를 사용할수도 있습니다.
+
 
 ```javascript
 /*
