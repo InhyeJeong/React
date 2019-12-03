@@ -43,6 +43,43 @@ export function fetchMovieActionCreator(response) {
 * action의 type값에 따라
 * **새로운 state**를 return
 
+```javascript
+import { combineReducers } from "redux";
+//  action type
+import {
+  FETCH_MOVIES,
+  FETCH_MOVIE,
+} from './action';
+
+const initialState = {
+  movies: [],
+  movie: [],
+}
+function fetchMoviesReducer(state = [], action) {
+  switch (action.type) {
+    case FETCH_MOVIES:
+      return {
+        ...state,
+        all: action.movies
+      };
+      case FETCH_MOVIE:
+        return {
+          ...state,
+          current: action.movie
+        };
+    default:
+      return initialState;
+  }
+}
+
+//  reducer를 하나로 combine한다.
+const movieReducer = combineReducers({
+  fetchMoviesReducer,
+});
+
+export default movieReducer;
+```
+
 ### how to use
 * 컴포넌트에서 원하는 액션 호출
 * 리듀서에서 호출된 1번 액션의 타입에 따른 새로운 state return
