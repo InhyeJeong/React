@@ -84,6 +84,7 @@ classNames('foo', { bar: true, duck: false }, 'baz', { quux: true }); // => 'foo
 // other falsy values are just ignored
 classNames(null, false, 'bar', undefined, 0, 1, { baz: null }, ''); // => 'bar 1'
 ```
+
 --------------------------------------------------------------
 ### 1) shouldComponentUpdate ()
 > [Life Cycle](https://ko.reactjs.org/docs/react-component.html)
@@ -512,3 +513,25 @@ const LoadWebSite = (Component) => {
 
 * 프레젠테이션 컴포넌트
 > DOM과 스타일에 구조만 추가한다. 속성(props)는 사용하지만 상태(state)를 갖는 경우는 거의 없다.
+
+### 11) FORM
+
+#### 1) input type checkbox
+* **defaultChecked**는 initail render에만 call되므로 update가 필요하면 **checked**를 사용해야한다.
+```javascript
+<input type="checkbox"
+       name="tomato"
+       checked={ this.state.input === 1 }
+       // value값은 state값이 아닌 지정값으로 setting가능
+       value={ 1 }
+       innerRef={ (input) => this.tomatoInput = input }
+       onChange={ this.selectInput }
+       disabled={ isInputDisabled } /> TOMATO
+       :
+       
+selectInput (e) {
+ let { value } = e.target
+ var inputValue = Number(value)
+ this.setState({ input: inputValue })
+}
+```
