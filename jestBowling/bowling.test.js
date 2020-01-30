@@ -20,12 +20,33 @@ describe('Test Bowling', () => {
     expect(bowling.getScore())
   })
   test('Test One Spare', () => {
-    bowling.roll(5);
-    bowling.roll(5); // spare
+    rollSpare()
     bowling.roll(3);
     let length = 17
     let pins = 0
     rollMany(length, pins);
     expect(bowling.getScore()).toBe(16)
+  })
+  function rollSpare () {
+    bowling.roll(5);
+    bowling.roll(5);
+  }
+  test('Test One Strike', () => {
+    rollStrike()
+    bowling.roll(3);
+    bowling.roll(4);
+    let length = 16
+    let pins = 0
+    rollMany(length, pins);
+    expect(bowling.getScore()).toBe(24)
+  })
+  function rollStrike () {
+    bowling.roll(10);
+  }
+  test('Test Perfect Game !!!!', () => {
+    let length = 12
+    let pins = 10
+    rollMany(length, pins);
+    expect(bowling.getScore()).toBe(300)
   })
 })
