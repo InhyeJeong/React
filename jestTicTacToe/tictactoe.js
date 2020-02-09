@@ -11,124 +11,124 @@
 // - 마지막 필드에 돌이 놓일 때
 class TicTacToe {
   constructor () {
-    this.fieldArray = Array(9).fill(false)
+    this.table = [
+      [-1, -1, -1],
+      [-1, -1, -1],
+      [-1, -1, -1],
+    ]
     this.players = {
       0: new Player('Player A'),
       1: new Player('Player B'),
     }
+    this.TABLE_SIZE= 3
   }
   generateRandomNumber (min, max) {
     let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
     return randomNumber
   }
-  findValidField () {
-    let randomNumber = this.generateRandomNumber(0, 8)
+  takeField (playerId) {
+    let randomColNumber = this.generateRandomNumber(0, this.TABLE_SIZE - 1)
+    let randomRowNumber = this.generateRandomNumber(0, this.TABLE_SIZE - 1)
     //  필드가 비어 있으면 돌을 놓는다.
-    if (this.fieldArray[randomNumber] === false) {
-      this.fieldArray[randomNumber] = true
-      return randomNumber
+    if (this.table[randomColNumber][randomRowNumber] === -1) {
+      this.table[randomColNumber][randomRowNumber] = playerId
     } else {
       //  필드가 놓여 있다면 다시 랜덤 숫자를 뽑는다.
-      return this.findValidField()
+      return this.takeField(playerId)
     }
   }
-  takeField (playerId) {
-    //  1) 본인 차례마다 패를 놓고, 
-    let randomNumber = this.findValidField()
-    //  2) 그 인덱스를 해당 플레이어에 저장한다.
-    const player = this.players[playerId]
-    player.saveFieldIndex(randomNumber)
-    //  3) 그 인덱스가 win규칙에 해당되면 winner가 된다
-  }
-  checkWinnerCondition () {
-    let isColumnBingo = this.checkColumnRule()
-    let isRowBingo = this.checkRowRule()
-    let isCrossBingo = this.checkCrossRule()
-    console.log('player!!!', this.players[0].fieldIndexList)
-    console.log(this.fieldArray[0], '|', this.fieldArray[1], '|', this.fieldArray[2])
-    console.log(this.fieldArray[3], '|', this.fieldArray[4], '|', this.fieldArray[5])
-    console.log(this.fieldArray[6], '|', this.fieldArray[7], '|', this.fieldArray[8])
+  checkWinnerCondition (playerId) {
+    let columnBingoObj = this.checkColumnRule(playerId)
+    let rowBingoObj = this.checkRowRule(playerId)
+    let crossBingoObj = this.checkCrossRule(playerId)
+    console.log(this.table[0][0], '|', this.table[0][1], '|', this.table[0][2])
+    console.log(this.table[1][0], '|', this.table[1][1], '|', this.table[1][2])
+    console.log(this.table[2][0], '|', this.table[2][1], '|', this.table[2][2])
 
-    return isColumnBingo || isRowBingo || isCrossBingo
+    return columnBingoObj.isBingo || rowBingoObj.isBingo || crossBingoObj.isBingo
   }
-  checkColumnRule () {
-    let randomNumber = this.generateRandomNumber(0, 2)
-    let columnRule = randomNumber * 3
-
-    if (this.fieldArray[columnRule] &&
-       this.fieldArray[columnRule + 1] &&
-       this.fieldArray[columnRule + 2]) {
-      console.log('행 Column 빙고')
-      return true
-    }
-    return false
-  }
-  checkRowRule () {
-    let randomNumber = this.generateRandomNumber(0, 2)
-    let rowRule = randomNumber
-
-    if (this.fieldArray[rowRule] &&
-       this.fieldArray[rowRule + 3] &&
-       this.fieldArray[rowRule + 6]) {
-      console.log('열 Row 빙고')
-      return true
-    }
-    return false
-  }
-  generateOddNumber (min, max) {
-    let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
-    if (randomNumber % 2 === 0) {
-      return randomNumber
-    } else {
-      //  max가 홀수로 들어올 경우 max보다 높은 값을 리턴할 수 있으므로 재귀
-      return this.generateOddNumber(min, max)
-    }
-  }
-  checkCrossRule () {
-    //  왼쪽 대각선 빙고
-    // [0,x,x
-    // x,4,x,
-    // x,x,8]
-
-    //  오른쪽 대각선 빙고
-    // [x,x,2
-    // x,4,x,
-    // 6,x,x]
-
-    let crossRule = this.generateOddNumber(0, 2)
-    let direction = 4
-    if (crossRule === 0) {
-      direction = 4
-    } else {
-      direction = 2
-    }
-    if (this.fieldArray[crossRule] &&
-       this.fieldArray[crossRule + direction] &&
-       this.fieldArray[crossRule + (direction * 2)]) {
-      console.log('대각선 Cross 빙고', crossRule)
-      return true
-    }
-    return false
-  }
-  getCurrentField () {
-    let currentFieldLength = this.fieldArray.length
-    for (let i = 0; i < this.fieldArray.length; i ++) {
-      if (this.fieldArray[i] === true) {
-        currentFieldLength = currentFieldLength - 1
+  checkColumnRule (playerId) {
+    let placedFieldCount = 0
+    for (let i = 0; i < this.TABLE_SIZE; i++) {
+      placedFieldCount = 0
+      for (let j = 0; j < this.TABLE_SIZE; j++) {
+        //  뒷쪽 index가 바깥 루프
+        //  앞쪽 index가 안쪽 루프
+        //  0,0 0,1 0,2
+        //  1,0 1,1 1,2
+        //  2,0 2,1 2,2
+        if (this.table[j][i] === playerId) {  //  [j][i] 순서를 바꿔써서 디버깅이 어려웠음
+          placedFieldCount++
+        }
+      }
+      if (placedFieldCount === this.TABLE_SIZE) {
+        return {
+          isBingo: true,
+          winner: playerId,
+        }
       }
     }
-    return currentFieldLength
+    return {
+      isBingo: false,
+      winner: null,
+    }
+  }
+  checkRowRule (playerId) {
+    let placedFieldCount = 0
+    for (let i = 0; i < this.TABLE_SIZE; i++) {
+      placedFieldCount = 0
+      for (let j = 0; j < this.TABLE_SIZE; j++) {
+        if (this.table[i][j] === playerId) {
+          placedFieldCount++
+        }
+      }
+      if (placedFieldCount === this.TABLE_SIZE) {
+        return {
+          isBingo: true,
+          winner: playerId,
+        }
+      }
+    }
+    return {
+      isBingo: false,
+      winner: null,
+    }
+  }
+  checkCrossRule (playerId) {
+    let leftCrossFieldCount = 0
+    for (let i = 0; i < this.TABLE_SIZE; i++) {
+      if (this.table[i][i] === playerId) {
+        leftCrossFieldCount++
+      }
+    }
+    if (leftCrossFieldCount === this.TABLE_SIZE) {
+      return {
+        isBingo: true,
+        winner: playerId,
+      }
+    }
+    let rightCrossFieldCount = 0
+    for (let i = 0; i < this.TABLE_SIZE; i++) {
+      if (this.table[i][(this.TABLE_SIZE - 1)- i] === playerId) {
+        rightCrossFieldCount++
+      }
+    }
+    if (rightCrossFieldCount === this.TABLE_SIZE) {
+      return {
+        isBingo: true,
+        winner: playerId,
+      }
+    }
+    return {
+      isBingo: false,
+      winner: null,
+    }
   }
 }
 
 class Player {
   constructor (name) {
     this.name = name
-    this.fieldIndexList = []
-  }
-  saveFieldIndex (fieldIndex) {
-    this.fieldIndexList.push(fieldIndex)
-    
   }
 }
 
