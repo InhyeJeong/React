@@ -21,12 +21,20 @@ class TicTacToe {
     let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min
     return randomNumber
   }
+  findValidField () {
+    let randomNumber = this.generateRandomNumber(0, 8)
+    //  필드가 비어 있으면 돌을 놓는다.
+    if (this.fieldArray[randomNumber] === false) {
+      this.fieldArray[randomNumber] = true
+      return randomNumber
+    } else {
+      //  필드가 놓여 있다면 다시 랜덤 숫자를 뽑는다.
+      return this.findValidField()
+    }
+  }
   takeField (playerId) {
     //  1) 본인 차례마다 패를 놓고, 
-    let randomNumber = this.generateRandomNumber(0, 8)
-    if (this.fieldArray[randomNumber] !== true) {
-      this.fieldArray[randomNumber] = true
-    }
+    let randomNumber = this.findValidField()
     //  2) 그 인덱스를 해당 플레이어에 저장한다.
     const player = this.players[playerId]
     player.saveFieldIndex(randomNumber)
@@ -36,6 +44,10 @@ class TicTacToe {
     let isColumnBingo = this.checkColumnRule()
     let isRowBingo = this.checkRowRule()
     let isCrossBingo = this.checkCrossRule()
+    console.log('player!!!', this.players[0].fieldIndexList)
+    console.log(this.fieldArray[0], '|', this.fieldArray[1], '|', this.fieldArray[2])
+    console.log(this.fieldArray[3], '|', this.fieldArray[4], '|', this.fieldArray[5])
+    console.log(this.fieldArray[6], '|', this.fieldArray[7], '|', this.fieldArray[8])
 
     return isColumnBingo || isRowBingo || isCrossBingo
   }
@@ -81,7 +93,7 @@ class TicTacToe {
     //  오른쪽 대각선 빙고
     // [x,x,2
     // x,4,x,
-    // 6,x,8]
+    // 6,x,x]
 
     let crossRule = this.generateOddNumber(0, 2)
     let direction = 4
@@ -93,7 +105,7 @@ class TicTacToe {
     if (this.fieldArray[crossRule] &&
        this.fieldArray[crossRule + direction] &&
        this.fieldArray[crossRule + (direction * 2)]) {
-      console.log('대각선 Cross 빙고')
+      console.log('대각선 Cross 빙고', crossRule)
       return true
     }
     return false
@@ -116,9 +128,7 @@ class Player {
   }
   saveFieldIndex (fieldIndex) {
     this.fieldIndexList.push(fieldIndex)
-  }
-  getName () {
-    return this.name
+    
   }
 }
 

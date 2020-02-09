@@ -14,9 +14,7 @@ describe('Test TicTacToe', () => {
     tictactoe.takeField(PLAYER_A_ID)
     tictactoe.takeField(PLAYER_A_ID)
     tictactoe.takeField(PLAYER_A_ID)
-    
-    let isPlayerWin = tictactoe.checkWinnerCondition()
-    console.log('check win : ', isPlayerWin)
+
     expect(tictactoe.checkWinnerCondition()).toBe(true)
   })
 })
