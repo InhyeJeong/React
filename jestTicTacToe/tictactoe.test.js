@@ -32,11 +32,13 @@ describe('Test TicTacToe', () => {
     tictactoe.takeOneField(rowIndex, colIndex, currentPlayer)
     let colBingoObj = tictactoe.checkColumnRule(currentPlayer)
     let rowBingoObj = tictactoe.checkRowRule(currentPlayer)
+    let crossBingoObj = tictactoe.checkCrossRule(currentPlayer)
 
-    return colBingoObj.isBingo || rowBingoObj.isBingo
+    return colBingoObj.isBingo || rowBingoObj.isBingo || crossBingoObj.isBingo
   }
   test('Test Player A Win as Row Bingo', () => {
     for (let i = 0; i < TABLE_SIZE * TABLE_SIZE; i++) {
+      //  Player A가 첫째 가로 줄 빙고
       let isBingo = takeOneField(0, i, PLAYER_A_ID)
       if (isBingo) return
       isBingo = takeOneField(1, i, PLAYER_B_ID)
@@ -47,9 +49,21 @@ describe('Test TicTacToe', () => {
   })
   test('Test Player A Win as Column Bingo', () => {
     for (let i = 0; i < TABLE_SIZE * TABLE_SIZE; i++) {
+      //  Player A가 첫째 세로 줄 빙고
       let isBingo = takeOneField(i, 0, PLAYER_A_ID)
       if (isBingo) return
       isBingo = takeOneField(i, 1, PLAYER_B_ID)
+      if (isBingo) return
+    }
+
+    expect(tictactoe.checkWinnerCondition(PLAYER_A_ID)).toBe(true)
+  })
+  test('Test Player A Win as Cross Bingo', () => {
+    for (let i = 0; i < TABLE_SIZE * TABLE_SIZE; i++) {
+      //  Player A가 왼쪽 대각선 빙고
+      let isBingo = takeOneField(i, i, PLAYER_A_ID)
+      if (isBingo) return
+      isBingo = takeOneField(i, TABLE_SIZE - (i+1), PLAYER_B_ID)
       if (isBingo) return
     }
 
