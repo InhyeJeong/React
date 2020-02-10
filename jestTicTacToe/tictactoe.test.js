@@ -10,7 +10,6 @@ describe('Test TicTacToe', () => {
   //   expect(tictactoe.getCurrentField()).toBe(8)
   // })
   function startField () {
-    console.log('here')
     let currentPlayer = PLAYER_A_ID
     for (let i = 0; i < TABLE_SIZE * TABLE_SIZE; i++) {
       tictactoe.takeField(currentPlayer)
@@ -29,9 +28,31 @@ describe('Test TicTacToe', () => {
       }
     }
   }
-  test('Test Column Bingo', () => {
-    startField()
+  function takeOneField (rowIndex, colIndex, currentPlayer) {
+    tictactoe.takeOneField(rowIndex, colIndex, currentPlayer)
+    let colBingoObj = tictactoe.checkColumnRule(currentPlayer)
+    let rowBingoObj = tictactoe.checkRowRule(currentPlayer)
 
-    // expect(tictactoe.checkWinnerCondition(PLAYER_A_ID)).toBe(true)
+    return colBingoObj.isBingo || rowBingoObj.isBingo
+  }
+  test('Test Player A Win as Row Bingo', () => {
+    for (let i = 0; i < TABLE_SIZE * TABLE_SIZE; i++) {
+      let isBingo = takeOneField(0, i, PLAYER_A_ID)
+      if (isBingo) return
+      isBingo = takeOneField(1, i, PLAYER_B_ID)
+      if (isBingo) return
+    }
+
+    expect(tictactoe.checkWinnerCondition(PLAYER_A_ID)).toBe(true)
+  })
+  test('Test Player A Win as Column Bingo', () => {
+    for (let i = 0; i < TABLE_SIZE * TABLE_SIZE; i++) {
+      let isBingo = takeOneField(i, 0, PLAYER_A_ID)
+      if (isBingo) return
+      isBingo = takeOneField(i, 1, PLAYER_B_ID)
+      if (isBingo) return
+    }
+
+    expect(tictactoe.checkWinnerCondition(PLAYER_A_ID)).toBe(true)
   })
 })

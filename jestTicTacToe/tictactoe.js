@@ -37,6 +37,11 @@ class TicTacToe {
       return this.takeField(playerId)
     }
   }
+  takeOneField (colIndex, rowIndex, playerId) {
+    if (this.table[colIndex][rowIndex] === -1) {
+      this.table[colIndex][rowIndex] = playerId
+    }
+  }
   checkWinnerCondition (playerId) {
     let columnBingoObj = this.checkColumnRule(playerId)
     let rowBingoObj = this.checkRowRule(playerId)
